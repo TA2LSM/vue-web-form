@@ -2,19 +2,18 @@
   <h1>{{ title }}</h1>
   <br>
 
+  <SignupForm/>
   
 </template>
 
 
 <script>
-// import Block from './components/Block.vue'
-// import Results from './components/Results.vue'
-
+import SignupForm from './components/SignupForm.vue'
 
 export default {
   name: 'App',   
   components: {
-
+    SignupForm
   },
 
   data() {
@@ -37,7 +36,7 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #444;
-    margin-top: 60px;
+    margin-top: 5px;
   }
 
   h1 {
@@ -46,21 +45,4 @@ export default {
     padding-bottom: 10px;
   }
 
-  button {
-    width: 15 0px;
-    background-color: #0faf87;
-    color: white;
-    border: none;
-    padding: 8px, 16px;
-    border-radius: 4px;
-    font-size: 16px;
-    letter-spacing: 1px;
-    cursor: pointer;
-    margin: 10px;
-  }
-
-  button[disabled] {
-    opacity: 0.2;
-    cursor: not-allowed;
-  }
 </style>
