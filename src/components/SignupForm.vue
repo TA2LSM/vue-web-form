@@ -8,6 +8,7 @@
 
         <label>Password:</label>
         <input type="password" required v-model="password">
+        <div v-if="passwordError" class="error">{{ passwordError }}</div>
 
         <label style="margin-right: 15px;">Role:</label>
         <select v-model="role">
@@ -30,7 +31,9 @@
 
         <label for="skill-input">Skills:</label>
         <input id="skill-input" type="text" v-model="tempSkill" @keyup="addSkill">
-        <label for="skill-input">Press comma (,) to enter skill</label>
+        <div for="skill-input" class="skill-explanation">
+            <span>Press comma (,) to enter skill. Click skill to remove from list.</span>
+        </div>
         <div v-for="skill in skills" :key="skill" class="pill">
             <span @click="deleteSkill(skill)">{{ skill }}</span>
         </div>
@@ -69,6 +72,7 @@
                 // names: [],
                 tempSkill: '',
                 skills: [],
+                passwordError: '',
             }
         },
 
@@ -99,7 +103,17 @@
             },
 
             handleSubmit() {
-                console.log("form submitted");
+                // validate password
+                this.passwordError = this.password.length > 5 ? 
+                '' : 'Password must be at least 6 characters long';
+
+                if(!this.passwordError) {
+                    console.log('E-mail: ', this.email);
+                    console.log('Password: ', this.password);
+                    console.log('Role: ', this.role);
+                    console.log('Skills: ', this.skills);
+                    console.log('Terms: ', this.terms);
+                }
             }
         }
     }
@@ -169,5 +183,19 @@
 
     .submit {
         text-align: center;
+    }
+
+    .error {
+        color: #ff0062;
+        margin-top: 10px;
+        font-size: 0.8rem;
+        font-weight: bold;
+    }
+
+    .skill-explanation {
+        color: #5d00ff;
+        margin-top: 10px;
+        font-size: 0.8rem;
+        font-weight: bold;       
     }
 </style>
