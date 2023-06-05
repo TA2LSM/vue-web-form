@@ -1,9 +1,7 @@
 <template>
   <h1>{{ title }}</h1>
   <br>
-
   <SignupForm/>
-  
 </template>
 
 
@@ -19,7 +17,6 @@ export default {
   data() {
     return {
       title: "~ Vue Web Form  ~",
-
     }
   },
 
